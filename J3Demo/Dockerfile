@@ -1,4 +1,4 @@
 FROM openjdk:8
 EXPOSE 8383
-ADD target/DockerRepo.jar DockerRepo.jar
-ENTRYPOINT [ "java","-jar","/DockerRepo.jar"]
+ADD target/dockerrepo.jar dockerrepo.jar
+ENTRYPOINT [ "java","-jar","/dockerrepo.jar"]

@@ -1,7 +1,7 @@
 FROM openjdk:11
 COPY . .
 RUN mvn clean package
-FROM openjdk:17-jdk-alpine
+FROM openjdk:11
 WORKDIR /dockerrepo
 COPY --from=build /javaapps-github/target/demopro.jar .
 EXPOSE 8383

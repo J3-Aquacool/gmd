@@ -1,6 +1,8 @@
-FROM openjdk:17-jdk-alpine
-WORKDIR /javaapps-github
-EXPOSE 8383
+FROM maven:3.8.7-openjdk-17 AS build
+COPY ..
 RUN mvn clean package
-COPY --from=build /javaapps-github/target/demopro.jar /dockerrepo/demopro.jar
-ENTRYPOINT ["java","-jar","/javaapps-github/demopro.jar"]
+FROM openjdk:17-jdk-alpine
+WORKDIR /dockerrepo
+COPY --from=build /javaapps-github/target/demopro.jar .
+EXPOSE 8383
+ENTRYPOINT ["java","-jar","/dockerrepo/demopro.jar"]

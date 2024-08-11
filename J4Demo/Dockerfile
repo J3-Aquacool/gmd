@@ -1,7 +1,7 @@
-FROM maven:3.8.8-openjdk-11 AS build
+FROM maven:3.9.8-amazoncorretto-17-al202 AS build
 COPY . .
 RUN mvn clean package
-FROM openjdk:11-jdk
+FROM openjdk:23-ea-17-slim
 WORKDIR /dockerrepo
 COPY --from=build /javaapps-github/target/demopro.jar .
 EXPOSE 8383

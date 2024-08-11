@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM maven:3.8.8-openjdk-11 AS build
 COPY . .
 RUN mvn clean package
 FROM openjdk:11

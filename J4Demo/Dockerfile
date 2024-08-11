@@ -1,7 +1,7 @@
-FROM maven:3.8.8-openjdk-11 AS build
+FROM openjdk:24-jdk-oracle
 COPY . .
 RUN mvn clean package
-FROM openjdk:11
+FROM openjdk:24-jdk-oracle
 WORKDIR /dockerrepo
 COPY --from=build /javaapps-github/target/demopro.jar .
 EXPOSE 8383
